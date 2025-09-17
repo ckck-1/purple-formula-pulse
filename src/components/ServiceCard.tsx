@@ -5,7 +5,7 @@ interface ServiceCardProps {
   title: string;
   subtitle: string;
   description: string;
-  iconType: 'gear' | 'building' | 'globe' | 'portfolio' | 'network' | 'bank';
+  iconType: 'phone' | 'laptop' | 'globe' | 'briefcase' | 'network' | 'bank' | 'gear' | 'building';
 }
 
 export const ServiceCard: React.FC<ServiceCardProps> = ({
@@ -28,7 +28,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
         {/* Content */}
         <div className="text-center md:text-left space-y-3">
           <div>
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground group-hover:text-neon-glow transition-colors duration-300">
               {title}
             </h3>
             <h4 className="text-xl md:text-2xl font-semibold neon-text">
@@ -39,6 +39,13 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
           <p className="text-muted-foreground text-lg leading-relaxed max-w-md">
             {description}
           </p>
+
+          {/* Interactive glow particles */}
+          <div className="flex gap-2 justify-center md:justify-start pt-2">
+            <div className="w-2 h-2 bg-neon-glow rounded-full animate-pulse" />
+            <div className="w-2 h-2 bg-neon-magenta rounded-full animate-pulse" style={{animationDelay: '0.5s'}} />
+            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" style={{animationDelay: '1s'}} />
+          </div>
         </div>
       </div>
       

@@ -7,11 +7,11 @@ export const ServicesSection = () => {
   const services = [
     {
       key: 'optimizing',
-      iconType: 'gear' as const,
+      iconType: 'phone' as const,
     },
     {
       key: 'corporate',
-      iconType: 'building' as const,
+      iconType: 'laptop' as const,
     },
     {
       key: 'structure',
@@ -19,7 +19,7 @@ export const ServicesSection = () => {
     },
     {
       key: 'portfolio',
-      iconType: 'portfolio' as const,
+      iconType: 'briefcase' as const,
     },
     {
       key: 'global',

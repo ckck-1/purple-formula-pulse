@@ -4,9 +4,106 @@ import { Box, Cylinder, Torus, Sphere } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface ServiceIcon3DProps {
-  type: 'gear' | 'building' | 'globe' | 'portfolio' | 'network' | 'bank';
+  type: 'phone' | 'laptop' | 'globe' | 'briefcase' | 'network' | 'bank' | 'gear' | 'building';
   className?: string;
 }
+
+const PhoneIcon = () => {
+  const meshRef = useRef<THREE.Mesh>(null);
+  const screenRef = useRef<THREE.Mesh>(null);
+  
+  useFrame(({ clock }) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.y = Math.sin(clock.getElapsedTime()) * 0.3;
+      meshRef.current.rotation.x = Math.sin(clock.getElapsedTime() * 0.8) * 0.1;
+    }
+    if (screenRef.current && screenRef.current.material instanceof THREE.MeshPhongMaterial) {
+      screenRef.current.material.emissiveIntensity = 0.3 + Math.sin(clock.getElapsedTime() * 2) * 0.1;
+    }
+  });
+
+  return (
+    <group>
+      {/* Phone body */}
+      <Box ref={meshRef} args={[0.8, 1.4, 0.1]} position={[0, 0, 0]}>
+        <meshPhongMaterial color="#1a1a2e" />
+      </Box>
+      {/* Screen */}
+      <Box ref={screenRef} args={[0.7, 1.2, 0.05]} position={[0, 0, 0.08]}>
+        <meshPhongMaterial color="#8B5CF6" emissive="#8B5CF6" emissiveIntensity={0.3} />
+      </Box>
+      {/* Home button */}
+      <Sphere args={[0.08]} position={[0, -0.5, 0.12]}>
+        <meshPhongMaterial color="#E879F9" />
+      </Sphere>
+    </group>
+  );
+};
+
+const LaptopIcon = () => {
+  const screenRef = useRef<THREE.Mesh>(null);
+  const groupRef = useRef<THREE.Group>(null);
+  
+  useFrame(({ clock }) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y = clock.getElapsedTime() * 0.2;
+    }
+    if (screenRef.current && screenRef.current.material instanceof THREE.MeshPhongMaterial) {
+      screenRef.current.material.emissiveIntensity = 0.4 + Math.sin(clock.getElapsedTime() * 1.5) * 0.2;
+    }
+  });
+
+  return (
+    <group ref={groupRef}>
+      {/* Base */}
+      <Box args={[1.6, 0.1, 1]} position={[0, -0.4, 0]}>
+        <meshPhongMaterial color="#1a1a2e" />
+      </Box>
+      {/* Screen */}
+      <Box args={[1.5, 1, 0.05]} position={[0, 0.1, -0.4]} rotation={[-0.1, 0, 0]}>
+        <meshPhongMaterial color="#0f0f23" />
+      </Box>
+      {/* Screen display */}
+      <Box ref={screenRef} args={[1.3, 0.8, 0.02]} position={[0, 0.1, -0.37]} rotation={[-0.1, 0, 0]}>
+        <meshPhongMaterial color="#8B5CF6" emissive="#8B5CF6" emissiveIntensity={0.4} />
+      </Box>
+    </group>
+  );
+};
+
+const BriefcaseIcon = () => {
+  const groupRef = useRef<THREE.Group>(null);
+  
+  useFrame(({ clock }) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.5) * 0.2;
+      groupRef.current.position.y = Math.sin(clock.getElapsedTime() * 2) * 0.05;
+    }
+  });
+
+  return (
+    <group ref={groupRef}>
+      {/* Main body */}
+      <Box args={[1.4, 0.9, 0.4]} position={[0, 0, 0]}>
+        <meshPhongMaterial color="#8B5CF6" />
+      </Box>
+      {/* Handle */}
+      <Torus args={[0.2, 0.05, 8, 16]} position={[0, 0.6, 0]} rotation={[Math.PI / 2, 0, 0]}>
+        <meshPhongMaterial color="#E879F9" />
+      </Torus>
+      {/* Lock */}
+      <Box args={[0.2, 0.15, 0.08]} position={[0, -0.1, 0.25]}>
+        <meshPhongMaterial color="#A855F7" />
+      </Box>
+      {/* Corners */}
+      {[[-0.6, -0.4, 0.2], [0.6, -0.4, 0.2], [-0.6, 0.4, 0.2], [0.6, 0.4, 0.2]].map((pos, i) => (
+        <Sphere key={i} args={[0.05]} position={pos as [number, number, number]}>
+          <meshPhongMaterial color="#E879F9" />
+        </Sphere>
+      ))}
+    </group>
+  );
+};
 
 const GearIcon = () => {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -159,12 +256,14 @@ const BankIcon = () => {
 };
 
 const iconComponents = {
-  gear: GearIcon,
-  building: BuildingIcon,
+  phone: PhoneIcon,
+  laptop: LaptopIcon,
   globe: GlobeIcon,
-  portfolio: PortfolioIcon,
+  briefcase: BriefcaseIcon,
   network: NetworkIcon,
   bank: BankIcon,
+  gear: GearIcon,
+  building: BuildingIcon,
 };
 
 export const ServiceIcon3D: React.FC<ServiceIcon3DProps> = ({ type, className }) => {

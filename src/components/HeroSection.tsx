@@ -43,12 +43,15 @@ export const HeroSection = () => {
 
           {/* 3D Globe */}
           <div className="relative">
+            <div className="absolute inset-0 bg-gradient-radial from-purple-500/20 via-transparent to-transparent blur-2xl" />
             <NetworkGlobe className="w-full h-96 lg:h-[500px]" />
             
             {/* Floating particles */}
             <div className="absolute top-10 left-10 w-2 h-2 bg-neon-glow rounded-full float-animation opacity-60" />
             <div className="absolute top-20 right-16 w-1 h-1 bg-neon-magenta rounded-full float-animation opacity-80" style={{animationDelay: '1s'}} />
             <div className="absolute bottom-16 left-20 w-1.5 h-1.5 bg-purple-400 rounded-full float-animation opacity-70" style={{animationDelay: '3s'}} />
+            <div className="absolute top-32 right-8 w-1 h-1 bg-neon-glow rounded-full float-animation opacity-60" style={{animationDelay: '2s'}} />
+            <div className="absolute bottom-32 right-24 w-1.5 h-1.5 bg-neon-magenta rounded-full float-animation opacity-80" style={{animationDelay: '4s'}} />
           </div>
         </div>
       </div>
