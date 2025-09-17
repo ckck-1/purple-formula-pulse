@@ -8,89 +8,167 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Futuristic Purple Theme - High Contrast */
+    --background: 266 95% 8%;
+    --foreground: 266 20% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Purple Depths */
+    --purple-900: 266 95% 8%;
+    --purple-800: 268 85% 12%;
+    --purple-700: 268 95% 22%;
+    --purple-600: 270 85% 35%;
+    --purple-500: 275 92% 48%;
+    --purple-400: 280 85% 65%;
+    --purple-300: 285 75% 80%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Accent Colors */
+    --accent-magenta: 320 85% 60%;
+    --accent-cyan: 190 95% 70%;
+    --neon-glow: 275 100% 75%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Glass Effects */
+    --glass-bg: 266 30% 15%;
+    --glass-border: 266 50% 25%;
+    --glass-glow: 275 92% 48%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Component Colors */
+    --background: var(--purple-900);
+    --foreground: 266 20% 95%;
+    
+    --card: var(--glass-bg);
+    --card-foreground: 266 15% 90%;
+    
+    --popover: var(--purple-700);
+    --popover-foreground: 266 15% 95%;
+    
+    --primary: var(--purple-500);
+    --primary-foreground: 266 95% 8%;
+    
+    --secondary: var(--purple-700);
+    --secondary-foreground: 266 15% 90%;
+    
+    --muted: var(--purple-800);
+    --muted-foreground: 266 15% 70%;
+    
+    --accent: var(--accent-magenta);
+    --accent-foreground: 266 95% 8%;
+    
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: var(--glass-border);
+    --input: var(--purple-700);
+    --ring: var(--purple-500);
+    
+    --radius: 0.75rem;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Gradients */
+    --gradient-neon: linear-gradient(135deg, hsl(var(--purple-500)), hsl(var(--accent-magenta)));
+    --gradient-glass: linear-gradient(135deg, 
+      hsla(var(--purple-700), 0.3), 
+      hsla(var(--purple-600), 0.1)
+    );
+    --gradient-bg: radial-gradient(ellipse at top, 
+      hsl(var(--purple-800)), 
+      hsl(var(--purple-900))
+    );
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Shadows & Glows */
+    --shadow-neon: 0 0 20px hsl(var(--purple-500) / 0.5);
+    --shadow-glow: 0 0 40px hsl(var(--accent-magenta) / 0.3);
+    --shadow-glass: 0 8px 32px hsl(var(--purple-900) / 0.8);
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Animations */
+    --transition-glow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-float: transform 6s ease-in-out infinite;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark mode uses same futuristic theme */
+    --background: var(--purple-900);
+    --foreground: 266 20% 95%;
+    --card: var(--glass-bg);
+    --card-foreground: 266 15% 90%;
+    --popover: var(--purple-700);
+    --popover-foreground: 266 15% 95%;
+    --primary: var(--purple-500);
+    --primary-foreground: 266 95% 8%;
+    --secondary: var(--purple-700);
+    --secondary-foreground: 266 15% 90%;
+    --muted: var(--purple-800);
+    --muted-foreground: 266 15% 70%;
+    --accent: var(--accent-magenta);
+    --accent-foreground: 266 95% 8%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: var(--glass-border);
+    --input: var(--purple-700);
+    --ring: var(--purple-500);
+  }
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+  /* Global Styles */
+  * {
+    @apply border-border;
+  }
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-bg);
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+  }
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+  /* Glass Morphism Utility Classes */
+  .glass-panel {
+    background: var(--gradient-glass);
+    backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--glass-border) / 0.3);
+    box-shadow: var(--shadow-glass);
+  }
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+  .neon-glow {
+    box-shadow: var(--shadow-neon);
+    border: 1px solid hsl(var(--purple-500) / 0.5);
+  }
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+  .neon-text {
+    color: hsl(var(--neon-glow));
+    text-shadow: 0 0 10px hsl(var(--neon-glow) / 0.8);
+  }
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+  /* Animation Classes */
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+  .glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+  }
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+  }
+
+  @keyframes glow-pulse {
+    0% { box-shadow: var(--shadow-neon); }
+    100% { box-shadow: var(--shadow-glow); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--purple-400) / 0.4),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
   }
 }
 

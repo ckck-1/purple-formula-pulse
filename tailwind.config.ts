@@ -47,6 +47,26 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Futuristic Purple Palette
+        purple: {
+          900: "hsl(var(--purple-900))",
+          800: "hsl(var(--purple-800))",
+          700: "hsl(var(--purple-700))",
+          600: "hsl(var(--purple-600))",
+          500: "hsl(var(--purple-500))",
+          400: "hsl(var(--purple-400))",
+          300: "hsl(var(--purple-300))",
+        },
+        neon: {
+          magenta: "hsl(var(--accent-magenta))",
+          cyan: "hsl(var(--accent-cyan))",
+          glow: "hsl(var(--neon-glow))",
+        },
+        glass: {
+          bg: "hsl(var(--glass-bg))",
+          border: "hsl(var(--glass-border))",
+          glow: "hsl(var(--glass-glow))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -57,6 +77,16 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+      },
+      backgroundImage: {
+        'gradient-neon': 'var(--gradient-neon)',
+        'gradient-glass': 'var(--gradient-glass)',
+        'gradient-bg': 'var(--gradient-bg)',
+      },
+      boxShadow: {
+        'neon': 'var(--shadow-neon)',
+        'glow': 'var(--shadow-glow)',
+        'glass': 'var(--shadow-glass)',
       },
       borderRadius: {
         lg: "var(--radius)",
