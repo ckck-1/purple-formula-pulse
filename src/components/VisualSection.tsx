@@ -3,6 +3,11 @@ import businessOffice from '@/assets/business-office.jpg';
 import globalNetwork from '@/assets/global-network.jpg';
 import fintechConcept from '@/assets/fintech-concept.jpg';
 import businessTeam from '@/assets/business-team.jpg';
+import futuristicOffice from '@/assets/futuristic-office.jpg';
+import digitalFinance from '@/assets/digital-finance.jpg';
+import cyberCity from '@/assets/cyber-city.jpg';
+import { HolographicChart } from '@/components/3d/HolographicChart';
+import { CrystalTower } from '@/components/3d/CrystalTower';
 
 export const VisualSection = () => {
   const { t } = useTranslation();

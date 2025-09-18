@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { ServiceCard } from '@/components/ServiceCard';
+import futuristicOffice from '@/assets/futuristic-office.jpg';
 
 export const ServicesSection = () => {
   const { t } = useTranslation();
@@ -33,10 +34,22 @@ export const ServicesSection = () => {
 
   return (
     <section id="services" className="py-20 relative">
-      {/* Background decorations */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div className="absolute top-40 -left-20 w-80 h-80 bg-purple-600/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-40 -right-20 w-96 h-96 bg-neon-magenta/5 rounded-full blur-3xl" />
+      {/* Enhanced background with futuristic imagery */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{
+            backgroundImage: `url(${futuristicOffice})`,
+            filter: 'blur(1px) hue-rotate(270deg)'
+          }}
+        />
+        <div className="absolute top-40 -left-20 w-80 h-80 bg-purple-600/5 rounded-full blur-3xl holographic" />
+        <div className="absolute bottom-40 -right-20 w-96 h-96 bg-neon-magenta/5 rounded-full blur-3xl holographic" />
+        
+        {/* Floating geometric elements */}
+        <div className="absolute top-20 right-1/4 w-4 h-4 rotate-45 bg-gradient-neon opacity-60 float-animation" />
+        <div className="absolute bottom-32 left-1/3 w-3 h-3 rotate-12 bg-neon-glow rounded-full glow-pulse" />
+        <div className="absolute top-1/2 right-12 w-2 h-2 bg-accent-magenta rounded-full shimmer" />
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
