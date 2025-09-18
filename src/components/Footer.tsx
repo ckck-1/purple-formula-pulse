@@ -8,8 +8,8 @@ export const Footer = () => {
     <footer className="relative py-20 border-t border-purple-500/20">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-mesh opacity-5" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent-magenta/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-black/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-black/15 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-6 relative z-10">
         {/* Main Footer Content */}
@@ -130,16 +130,16 @@ export const Footer = () => {
         <div className="border-t border-purple-500/20 pt-12">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
             <div className="flex flex-wrap gap-6 text-sm">
-              <a href="#" className="text-muted-foreground hover:text-neon-glow transition-colors duration-300">
+              <a href="/terms" className="text-muted-foreground hover:text-neon-glow transition-colors duration-300">
                 Terms & Conditions
               </a>
-              <a href="#" className="text-muted-foreground hover:text-neon-glow transition-colors duration-300">
+              <a href="/privacy" className="text-muted-foreground hover:text-neon-glow transition-colors duration-300">
                 Privacy Policy
               </a>
-              <a href="#" className="text-muted-foreground hover:text-neon-glow transition-colors duration-300">
+              <a href="/disclaimer" className="text-muted-foreground hover:text-neon-glow transition-colors duration-300">
                 Disclaimer
               </a>
-              <a href="#" className="text-muted-foreground hover:text-neon-glow transition-colors duration-300">
+              <a href="/cookies" className="text-muted-foreground hover:text-neon-glow transition-colors duration-300">
                 Cookies Policy
               </a>
             </div>
