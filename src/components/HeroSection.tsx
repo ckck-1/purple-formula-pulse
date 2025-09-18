@@ -1,10 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { NetworkGlobe } from '@/components/3d/NetworkGlobe';
 import { Button } from '@/components/ui/button';
+import { Reveal } from '@/components/animations/Reveal';
+import { useParallax } from '@/components/animations/useParallax';
 import cyberCity from '@/assets/cyber-city.jpg';
 
 export const HeroSection = () => {
   const { t } = useTranslation();
+  const pBlobRight = useParallax<HTMLDivElement>(0.15);
+  const pBlobLeft = useParallax<HTMLDivElement>(0.22);
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -18,21 +22,22 @@ export const HeroSection = () => {
           }}
         />
         <div className="absolute inset-0 bg-gradient-bg opacity-70" />
-        <div className="absolute inset-0 bg-gradient-mesh opacity-20" />
       </div>
       
-      <div className="absolute top-20 right-20 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl float-animation holographic" />
-      <div className="absolute bottom-20 left-20 w-64 h-64 bg-neon-magenta/15 rounded-full blur-3xl float-animation holographic" style={{animationDelay: '2s'}} />
+      <div ref={pBlobRight.ref} style={pBlobRight.style} className="absolute top-20 right-20 w-96 h-96 bg-black/30 rounded-full blur-3xl float-animation" />
+      <div
+        ref={pBlobLeft.ref}
+        style={{ ...pBlobLeft.style, animationDelay: '2s' }}
+        className="absolute bottom-20 left-20 w-64 h-64 bg-black/20 rounded-full blur-3xl float-animation"
+      />
       
-      {/* Floating geometric elements */}
-      <div className="absolute top-1/4 left-1/4 w-6 h-6 rotate-45 bg-gradient-neon opacity-40 float-animation crystal-glow" />
-      <div className="absolute bottom-1/3 right-1/3 w-4 h-4 rotate-12 bg-neon-glow rounded-full glow-pulse" />
-      <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-accent-magenta rounded-full shimmer rotate-slow" />
+      {/* Minimal floating element for subtle depth */}
+      <div className="absolute bottom-1/3 right-1/3 w-3 h-3 bg-black/30 rounded-full" />
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="space-y-8">
+          <Reveal as="div" className="space-y-8" y={24} blur={8}>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
               <span className="text-foreground">{t('hero.title')} </span>
               <span className="neon-text bg-gradient-neon bg-clip-text text-transparent">
@@ -56,10 +61,10 @@ export const HeroSection = () => {
                 Learn More
               </Button>
             </div>
-          </div>
+          </Reveal>
 
           {/* Enhanced 3D Globe */}
-          <div className="relative">
+          <Reveal as="div" className="relative" y={24} blur={8} delay={0.15}>
             <div className="absolute inset-0 bg-gradient-radial blur-3xl opacity-60" />
             <div className="glass-panel p-8 rounded-3xl shadow-glow">
               <NetworkGlobe className="w-full h-96 lg:h-[500px]" />
@@ -75,7 +80,7 @@ export const HeroSection = () => {
             {/* Orbital rings */}
             <div className="absolute inset-8 border border-purple-500/20 rounded-full rotate-slow opacity-40" />
             <div className="absolute inset-16 border border-accent-magenta/30 rounded-full rotate-slow opacity-60" style={{animationDirection: 'reverse'}} />
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

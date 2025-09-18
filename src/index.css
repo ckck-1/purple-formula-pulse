@@ -8,28 +8,28 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Futuristic Purple Theme - High Contrast */
-    --background: 266 95% 8%;
+    /* Futuristic Purple Theme - Darker Variant */
+    --background: 266 95% 5%;
     --foreground: 266 20% 95%;
 
     /* Purple Depths */
-    --purple-900: 266 95% 8%;
-    --purple-800: 268 85% 12%;
-    --purple-700: 268 95% 22%;
-    --purple-600: 270 85% 35%;
-    --purple-500: 275 92% 48%;
+    --purple-900: 266 95% 5%;
+    --purple-800: 268 85% 10%;
+    --purple-700: 268 90% 18%;
+    --purple-600: 270 80% 30%;
+    --purple-500: 275 88% 44%;
     --purple-400: 280 85% 65%;
     --purple-300: 285 75% 80%;
 
     /* Accent Colors */
-    --accent-magenta: 320 85% 60%;
-    --accent-cyan: 190 95% 70%;
-    --neon-glow: 275 100% 75%;
+    --accent-magenta: 320 80% 56%;
+    --accent-cyan: 190 90% 66%;
+    --neon-glow: 275 100% 62%;
 
     /* Glass Effects */
-    --glass-bg: 266 30% 15%;
-    --glass-border: 266 50% 25%;
-    --glass-glow: 275 92% 48%;
+    --glass-bg: 266 35% 9%;
+    --glass-border: 266 45% 18%;
+    --glass-glow: 275 88% 42%;
 
     /* Component Colors */
     --background: var(--purple-900);
@@ -65,23 +65,24 @@ All colors MUST be HSL.
     /* Enhanced Gradients */
     --gradient-neon: linear-gradient(135deg, hsl(var(--purple-500)) 0%, hsl(var(--accent-magenta)) 50%, hsl(320, 85%, 70%) 100%);
     --gradient-glass: linear-gradient(135deg, 
-      hsla(var(--purple-700), 0.4), 
-      hsla(var(--purple-600), 0.2),
-      hsla(var(--purple-500), 0.1)
+      hsla(var(--purple-800), 0.45), 
+      hsla(var(--purple-700), 0.22),
+      hsla(var(--purple-600), 0.12)
     );
-    --gradient-bg: conic-gradient(from 180deg at 50% 50%, 
-      hsl(var(--purple-900)) 0deg, 
-      hsl(var(--purple-800)) 120deg, 
-      hsl(280, 85%, 12%) 240deg, 
-      hsl(var(--purple-900)) 360deg
+    /* Global Background: Black → Purple gradient (horizontal, darker intensity) */
+    --gradient-bg: linear-gradient(90deg,
+      hsl(0 0% 0%) 0%,                 /* Black */
+      hsl(var(--purple-900)) 40%,      /* Deeper purple */
+      hsl(var(--purple-800)) 70%,      /* Dark mid purple */
+      hsl(var(--purple-600)) 100%      /* Darker accent purple */
     );
     --gradient-radial: radial-gradient(ellipse at center, hsl(var(--purple-500) / 0.4) 0%, hsl(var(--accent-magenta) / 0.2) 50%, transparent 80%);
     --gradient-mesh: conic-gradient(from 180deg at 50% 50%, hsl(var(--purple-500)) 0deg, hsl(var(--accent-magenta)) 120deg, hsl(280, 85%, 60%) 240deg, hsl(var(--purple-500)) 360deg);
 
     /* Shadows & Glows */
-    --shadow-neon: 0 0 20px hsl(var(--purple-500) / 0.5);
-    --shadow-glow: 0 0 40px hsl(var(--accent-magenta) / 0.3);
-    --shadow-glass: 0 8px 32px hsl(var(--purple-900) / 0.8);
+    --shadow-neon: 0 0 18px hsl(var(--purple-500) / 0.35);
+    --shadow-glow: 0 0 32px hsl(var(--accent-magenta) / 0.22);
+    --shadow-glass: 0 8px 28px hsl(var(--purple-900) / 0.85);
 
     /* Animations */
     --transition-glow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -133,13 +134,13 @@ All colors MUST be HSL.
   }
 
   .glass-panel:hover {
-    background: linear-gradient(135deg, 
-      hsla(var(--purple-600), 0.5), 
-      hsla(var(--purple-500), 0.3),
-      hsla(var(--accent-magenta), 0.2)
+    background: linear-gradient(135deg,
+      hsla(var(--purple-700), 0.25),
+      hsla(var(--purple-600), 0.15),
+      hsla(var(--accent-magenta), 0.08)
     );
-    box-shadow: 0 0 40px hsl(var(--purple-500) / 0.6), 0 0 80px hsl(var(--accent-magenta) / 0.3);
-    transform: translateY(-2px);
+    box-shadow: 0 0 24px hsl(var(--purple-500) / 0.28), 0 0 48px hsl(var(--accent-magenta) / 0.12);
+    transform: none;
   }
 
   .neon-glow {
